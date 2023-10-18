@@ -1,15 +1,45 @@
+const { Schema, model } = require('mongoose');
+const thought = require('./Thought')
 
-// -username
-// String
-// Unique
-// Required
-// Trimmed
+const userNameSchema = new Schema(
+    {
+        userName: {
+            type: String,
+            required: true,
+            trim: true,
+            unique: true,
 
-// -email
-// String
-// Required
-// Unique
-// Must match a valid email address (look into Mongoose's matching validation)
+        },
+
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            match: {
+                value: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+                message: 'Invalid email format'
+            }
+        },
+         thoughts: [thought], //This will need something more. How to self reference as well?
+    },
+    //learn what a virtual is. 
+    {
+
+        toJSON: {
+            getters: true
+        },
+
+    }
+);
+
+
+
+// Initialize our User model
+const User = model('user', userNameSchema);
+
+module.exports = User;
+
+
 
 // -thoughts
 // Array of _id values referencing the Thought model
