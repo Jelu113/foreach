@@ -14,7 +14,7 @@
 // Required
 
 // -reactions (These are like replies)
-// Array of nested documents created with the reactionSchema
+// Array of nested documents created with the reactionSchema   FROM THE REACTION.JS
 
 // --Schema Settings
 // Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
