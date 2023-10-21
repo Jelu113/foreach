@@ -22,7 +22,7 @@ const thoughtSchema = new Schema(
     {
         toJSON: {
             getters: true,
-            viruals: true,
+            virtuals: true,
         },
         id:false,
     }
@@ -30,7 +30,15 @@ const thoughtSchema = new Schema(
 thoughtSchema.virtual("reactionCount").get(function () {
     return this.reactions.length;
 });
-
+thoughtSchema.virtual('formattedCreatedAt').get(function(){
+    const options = {
+        year: 'numeric',
+         month: 'long', 
+         day: 'numeric', 
+         hour: '2-digit', 
+         second: '2-digit'
+    }; return this.createdAt.toLocaleDateString('en-US',options);
+})
 
 const Thought = model('thought', thoughtSchema);
 // Use a getter method to format the timestamp on query
