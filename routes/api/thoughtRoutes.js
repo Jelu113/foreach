@@ -1,5 +1,12 @@
-//-- /api/users
-// GET all users
+const router = require("express").Router()
+const {getAll, getOne} = require("../../controllers/thoughtController")
+
+
+router.route("/").get(getAll).post()
+
+router.route("/:userId").get(getOne)
+
+
 // GET a single user by its _id and populated thought and friend data
 // POST a new user:
 // // example data
@@ -11,8 +18,8 @@
 // DELETE to remove user by its _id
 // BONUS: Remove a user's associated thoughts when deleted.
 
-
-
+//api/users/12345/friends/7845
+router.route("/:userId/friends/:friendId")
 // --/api/users/:userId/friends/:friendId
 // POST to add a new friend to a user's friend list
 // DELETE to remove a friend from a user's friend list
@@ -37,7 +44,8 @@
 
 
 //-- /api/thoughts/:thoughtId/reactions
+
 // POST to create a reaction stored in a single thought's reactions array field
 // DELETE to pull and remove a reaction by the reaction's reactionId value
 
-module.exports = Routes;
+module.exports = router;

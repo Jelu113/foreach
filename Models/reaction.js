@@ -1,6 +1,8 @@
 const { Schema, model } = require('mongoose');
 
-
+// -reactionId
+// Use Mongoose's ObjectId data type
+// Default value is set to a new ObjectId
 const reactionSchema = new Schema(
     {
         reactionBody: {
@@ -25,27 +27,16 @@ const reactionSchema = new Schema(
     }
 );
 
-const Reaction = model('reaction', reactionSchema);
 
-module.exports = Reaction;
+
+module.exports = reactionSchema;
 // --Reaction (SCHEMA ONLY)
 
-// -reactionId
-// Use Mongoose's ObjectId data type
-// Default value is set to a new ObjectId
 
-//- reactionBody
-// String
-// Required
-// 280 character maximum
 
-//- username
-// String
-// Required
 
-// -createdAt
-// Date
-// Set default value to the current timestamp
+
+
 // Use a getter method to format the timestamp on query
 
 // --Schema Settings

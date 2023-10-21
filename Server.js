@@ -9,8 +9,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Finds all books
-app.get('/all-books', async (req, res) => {
+
+app.get('/', async (req, res) => {
   try {
     // Using model in route to find all documents that are instances of that model
     const result = await Foreach.find({});

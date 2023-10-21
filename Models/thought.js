@@ -22,9 +22,15 @@ const thoughtSchema = new Schema(
     {
         toJSON: {
             getters: true,
+            viruals: true,
         },
+        id:false,
     }
 );
+thoughtSchema.virtual("reactionCount").get(function () {
+    return this.reactions.length;
+});
+
 
 const Thought = model('thought', thoughtSchema);
 // Use a getter method to format the timestamp on query

@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const thought = require('./Thought')
+
 
 const userNameSchema = new Schema(
     {
@@ -20,8 +20,24 @@ const userNameSchema = new Schema(
                 message: 'Invalid email format'
             }
         },
-         thoughts: [thought], //This will need something more. How to self reference as well?
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "thought"
+            }
+        ],
+
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "user"
+
+            }
+        ],
+
+
     },
+
     //learn what a virtual is. 
     {
 
@@ -31,7 +47,9 @@ const userNameSchema = new Schema(
 
     }
 );
-
+userNameSchema.virtual("friendCount").get(function () {
+    return this.friends.length;
+});
 
 
 // Initialize our User model
