@@ -1,10 +1,13 @@
 const router = require("express").Router()
-const {getAll, getOne} = require("../../controllers/userController")
+const {getAll, getOne, deleteUser} = require("../../controllers/userController")
 
 
-router.route("/").get(getAll).post()
+router.route("/").get(getAll).post(newUser)
 
-router.route("/:userId").get(getOne)
+router.route("/:userId")
+.get(getOne)
+.put(updateUser)
+.delete(deleteUser)
 
 
 // GET a single user by its _id and populated thought and friend data

@@ -4,7 +4,7 @@ const {getAll, getOne} = require("../../controllers/thoughtController")
 
 router.route("/").get(getAll).post()
 
-router.route("/:userId").get(getOne)
+router.route("/:userId").get(getOne).put().delete()
 
 
 // GET a single user by its _id and populated thought and friend data

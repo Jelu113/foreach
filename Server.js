@@ -1,7 +1,7 @@
 const express = require('express');
 const db = require('./config/connection');
 // Require model
-const { Foreach } = require('./models');
+const { Foreach } = require('./Models');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
