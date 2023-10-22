@@ -39,14 +39,9 @@ thoughtSchema.virtual('formattedCreatedAt').get(function(){
          second: '2-digit'
     }; return this.createdAt.toLocaleDateString('en-US',options);
 })
-
+thoughtSchema.virtual("reactionCount").get(function () {
+    return this.reactions.length;
+});
 const Thought = model('thought', thoughtSchema);
-// Use a getter method to format the timestamp on query
-
-// -reactions (These are like replies)
-// Array of nested documents created with the reactionSchema   FROM THE REACTION.JS
-
-// --Schema Settings
-// Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
 
 module.exports = Thought;
