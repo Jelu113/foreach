@@ -11,7 +11,7 @@ router.route("/").get(getAll).post(createThought);
 
 router.route("/:userId").get(getOne).put(updateThought).delete(removeThought);
 
-router.route("/:userId/friends/:friendId");
+//router.route("/:userId/friends/:friendId");
 
 // POST to create a new thought (don't forget to push the created thought's _id to the associated user's thoughts array field)
 // // example data
